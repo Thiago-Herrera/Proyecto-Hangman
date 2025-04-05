@@ -5,8 +5,8 @@
       1. Jugar. (INICIAR JUEGO DEL AHORCADO)
       2. Salir. (SALIR DEL JUEGO)
    3. Reglas:
-      1. Tienes de 2 a 6 intentos para adivinar la palabra.(Dependiendo la dificultad)
-      2. Si adivinas una letra, se mostrará en la pantalla.
+      1. Tienes de 2 a 6 vidas para adivinar la palabra.(Dependiendo la dificultad)
+      2. Si adivinas una letra se añadera.
       3. Si no adivinas una letra, se te restará un intento.
       4. Si adivinas la palabra, ¡ganas!
       5. Si te quedas sin intentos, pierdes
@@ -38,13 +38,20 @@
 
     
 ## **Atributos:**
-  - Palabras
+  - Palabra secreta
   - Nombre_Jugador 
   - Nombre_Ahorcado 
   - Dificultad
   - vidas
   - letras_usadas
   - letras_adivinadas
+  - intentos_maximos
 ## **Metodos:**
-  - Dibujo_Ahorcado
-  - Menu de opciones                                     
+  - Dibujar del Ahorcado
+  - Menu de opciones
+  - reglas
+  - init
+  - Estado de la palabra
+  - preguntar letra
+  - preguntar nombre del ahorcado
+  - preguntar nombre del jugador                                 
