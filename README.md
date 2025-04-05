@@ -9,14 +9,34 @@
       2. Si adivinas una letra, se mostrará en la pantalla.
       3. Si no adivinas una letra, se te restará un intento.
       4. Si adivinas la palabra, ¡ganas!
-      5. Si te quedas sin intentos, pierdes.
-      4. Preguntar Dificultad. (Facil (6 vidas), Normal (4 vidas), Dificil (2 Vidas))
-      5. Preguntar Nombre del jugador.
-      6. Preguntar Nombre del ahorcado.
-      7. Elegir Palabra Secreta.
-      8. Inciar ciclo de juego:  (Hasta que acaben las vidas)
-        1. Colocar dibujo del ahorcado.
-        2. Colocar Espacios en blanco.
+      5. Si te quedas sin intentos, pierdes
+   4. Preguntar Dificultad. (Facil (6 vidas), Normal (4 vidas), Dificil (2 Vidas))
+   5. Preguntar Nombre del jugador.
+   6. Preguntar Nombre del ahorcado.
+   7. Elegir Palabra Secreta.
+   8. Inciar ciclo de juego:  (Hasta que acaben las vidas o se adivine la palabra)
+      1. Revisar vidas
+      2. Colocar dibujo del ahorcado.
+      3. Colocar Espacios en blanco.
+      4. Preguntar Letra.
+      5. Definir si es correcta, incorrecta o si esta usada.
+      6. Si es correcta:
+         1. escribir "¡Letra correcta =)!"
+         2. ecribir la letra en el lugar de los espacios que corresponde
+         3. repetir ciclo
+      7. si es incorrecta:
+         1. escribir "Letra incorrecta =("
+         2. -1 vidas
+         3. repetir ciclo
+      8. si esta usada:
+         1. escribir "ya has usado esa letra"
+         2. repetir ciclo
+   9. si se acabaron las vidas escribir "¡se te han acabado las vidas!"
+   10. si adivina la palabra escribir "enhorabuena has adivinado la palabra: (la palabra secreta)"
+   11. repetir todo desde el 2
+
+
+    
 ## **Atributos:**
   - Palabras
   - Nombre_Jugador 
