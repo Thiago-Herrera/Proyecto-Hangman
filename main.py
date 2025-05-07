@@ -1,8 +1,5 @@
 
 
-
-Dificultad = "dificil" # variable global
-
 class Ahorcado:
     """
     Clase Ahorcado que representa el juego del ahorcado."""
@@ -16,7 +13,27 @@ class Ahorcado:
         self.letras_usadas = []
         self.letras_adivinadas = []
 
+        def Dibujar_el_Ahorcado(self)
+        
+        
+        def Menu_de_opciones(self)
+        
+        
+        def reglas(self)
+        
+        
+        def Estado_de_la_palabra(self)
+        
+        
+        def Preguntar_letra(self)
+        
+        
+        def preguntar_nombre_del_ahorcado(self)
+        
+        
+        def preguntar_nombre_del_jugador(self)
+        
+        
 ahorcado = Ahorcado() # Instancia de la clase Ahorcado
 print(ahorcado.Dificultad) # Imprime la dificultad por defecto
-print(Dificultad) # Imprime la dificultad global
-print(ahorcado.__doc__)
+
