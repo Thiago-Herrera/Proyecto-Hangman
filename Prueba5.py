@@ -27,8 +27,7 @@ def main(page: ft.Page):
                     ]
                 ))
         elif page.route == "/reglas_y_mas":
-            page.views.append
-            (ft.View(
+            page.views.append(ft.View(
                 "/about", 
                 [
                 ft.Text("""REGLAS:
@@ -47,14 +46,22 @@ def main(page: ft.Page):
                       ]
                     )
                  )
-            page.update()
+            
         elif page.route == "/juego":
-            ft.Text(""),
-            page.views.append
-            ft.ElevatedButton(
-                "Ir al inicio",
-                on_click=go_home
-                                ),
+
+            page.views.append(
+                ft.View(
+                    "/juego",
+                    [
+                        ft.Text("Juego de Ahorcado", size=30, color="WHITE"),
+                        ft.ElevatedButton("Regresar a inicio",
+                                          on_click=go_home),
+                        ft.ElevatedButton("Regresar a reglas y mas informacion",
+                                          on_click=go_reglas_y_mas)
+                    ]
+                )
+            )
+        page.update()
     page.on_route_change = route_change
         
     page.go("/")
