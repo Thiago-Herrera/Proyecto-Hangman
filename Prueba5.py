@@ -39,10 +39,11 @@ def main(page: ft.Page):
                 size=15
                 ), 
                 ft.ElevatedButton
-                  (
-                        "Ir al inicio", 
-                        on_click=go_home
-                            )
+                  ("Ir al inicio", 
+                        on_click=go_home),
+                
+                ft.ElevatedButton("Iniciar Juego",
+                        on_click=go_juego,)
                       ]
                     )
                  )
@@ -56,7 +57,7 @@ def main(page: ft.Page):
                         ft.Text("Juego de Ahorcado", size=30, color="WHITE"),
                         ft.ElevatedButton("Regresar a inicio",
                                           on_click=go_home),
-                        ft.ElevatedButton("Regresar a reglas y mas informacion",
+                        ft.ElevatedButton("ir reglas y mas informacion",
                                           on_click=go_reglas_y_mas)
                     ]
                 )
