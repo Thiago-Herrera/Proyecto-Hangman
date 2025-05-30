@@ -5,7 +5,7 @@
       1. Jugar. (INICIAR JUEGO DEL AHORCADO)
       2. Salir. (SALIR DEL JUEGO)
    3. Reglas:
-      1. Tienes de 2 a 6 vidas para adivinar la palabra.(Dependiendo la dificultad)
+      1. Tienes de  6 vidas para adivinar la palabra.
       2. Si adivinas una letra se añadera.
       3. Si no adivinas una letra, se te restará un intento.
       4. Si adivinas la palabra, ¡ganas!
