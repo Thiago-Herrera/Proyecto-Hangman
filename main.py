@@ -7,7 +7,6 @@ class Ahorcado:
         Dificultad = "facil"
         self.Nombre_Jugador = "" 
         self.Nombre_Ahocado = ""
-        self.Dificultad = Dificultad # variable local
         self.intentos_maximos =  intentos_maximos
         self.Palabra_secreta = ""
         self.letras_usadas = []
