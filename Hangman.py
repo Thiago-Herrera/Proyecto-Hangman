@@ -36,7 +36,8 @@ def main(page: ft.Page):
                     border_radius=ft.border_radius.all(5),
                     on_hover=on_hover,
                 )
-            )
+            ) 
+
         return items
     # elementos del juego
     # titulo
@@ -45,7 +46,7 @@ def main(page: ft.Page):
         size=30,
         color="WHITE",
         text_align=ft.TextAlign.CENTER,
-    )
+    )# cambios
     # palabra a adivinar(en un inicio en blanco)
     fila_espacios = ft.Row(
         [
