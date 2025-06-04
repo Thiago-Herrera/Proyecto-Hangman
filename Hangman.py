@@ -1,8 +1,9 @@
 import flet as ft
 
+Vidas = 4
 
 def main(page: ft.Page):
-    page.title = "Hagman Game"
+    page.title = "Hagma"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.theme_mode = "light"
@@ -13,7 +14,6 @@ def main(page: ft.Page):
     def go_home(e):
         page.go("/")
         
-
     def go_reglas_y_mas(e):
         page.go("/reglas_y_mas")
     
@@ -101,19 +101,61 @@ def main(page: ft.Page):
             page.views.append(
                 ft.View(
                     "/juego",
-                    [ ft.Container(
-                        content=ft.Column(
-                            [
-                                titulo,
-                                fila_espacios,
-                                
-                            ],
-                            alignment=ft.MainAxisAlignment.CENTER
-                        ),
-                        bgcolor=ft.colors.BLACK,
-                        padding=20,
-                        border_radius=ft.border_radius.all(10)
-                    )
+                    [
+                         ft.ElevatedButton("Q",
+                        on_click=go_home,),
+                          ft.ElevatedButton("W",
+                        on_click=go_home,),
+                          ft.ElevatedButton("E",
+                        on_click=go_home,),
+                          ft.ElevatedButton("R",
+                        on_click=go_home,),
+                          ft.ElevatedButton("T",
+                        on_click=go_home,),
+                          ft.ElevatedButton("Y",
+                        on_click=go_home,),
+                          ft.ElevatedButton("U",
+                        on_click=go_home,),
+                          ft.ElevatedButton("I",
+                        on_click=go_home,),
+                          ft.ElevatedButton("O",
+                        on_click=go_home,),
+                          ft.ElevatedButton("P",
+                        on_click=go_home,),
+                          ft.ElevatedButton("A",
+                        on_click=go_home,),
+                          ft.ElevatedButton("S",
+                        on_click=go_home,),
+                          ft.ElevatedButton("D",
+                        on_click=go_home,),
+                          ft.ElevatedButton("F",
+                        on_click=go_home,),
+                          ft.ElevatedButton("G",
+                        on_click=go_home,),
+                          ft.ElevatedButton("H",
+                        on_click=go_home,),
+                          ft.ElevatedButton("J",
+                        on_click=go_home,),
+                          ft.ElevatedButton("K",
+                        on_click=go_home,),
+                          ft.ElevatedButton("L",
+                        on_click=go_home,),
+                          ft.ElevatedButton("Ñ",
+                        on_click=go_home,),
+                          ft.ElevatedButton("Z",
+                        on_click=go_home,),
+                          ft.ElevatedButton("X",
+                        on_click=go_home,),
+                          ft.ElevatedButton("C",
+                        on_click=go_home,),
+                          ft.ElevatedButton("V",
+                        on_click=go_home,),
+                          ft.ElevatedButton("B",
+                        on_click=go_home,),
+                          ft.ElevatedButton("N",
+                        on_click=go_home,),
+                          ft.ElevatedButton("M",
+                        on_click=go_home,),
                     ]
                 )
             )
