@@ -1,6 +1,21 @@
 import flet as ft
+import random
 
 Vidas = 4
+
+Palabras = [
+    "Python",
+    "Java script",
+    "Ordenador",
+    "Duolingo",
+    "Basicamente",
+    "Agua",
+    "Hola",
+    "Pastel",
+    "Mouse",
+    
+]
+Palabra_a_adivinar = random.choice(Palabras)
 
 def main(page: ft.Page):
     page.title = "Hagma"
@@ -51,7 +66,7 @@ def main(page: ft.Page):
     fila_espacios = ft.Row(
         [
             ft.Text("_", size=30, color="WHITE")
-            for _ in range(len(word))  # Cambia 5 por la longitud de la palabra
+            for _ in range(len(Palabra_a_adivinar))  # Cambia 5 por la longitud de la palabra
         ],
         alignment=ft.MainAxisAlignment.CENTER,
     )
@@ -102,60 +117,7 @@ def main(page: ft.Page):
                 ft.View(
                     "/juego",
                     [
-                         ft.ElevatedButton("Q",
-                        on_click=go_home,),
-                          ft.ElevatedButton("W",
-                        on_click=go_home,),
-                          ft.ElevatedButton("E",
-                        on_click=go_home,),
-                          ft.ElevatedButton("R",
-                        on_click=go_home,),
-                          ft.ElevatedButton("T",
-                        on_click=go_home,),
-                          ft.ElevatedButton("Y",
-                        on_click=go_home,),
-                          ft.ElevatedButton("U",
-                        on_click=go_home,),
-                          ft.ElevatedButton("I",
-                        on_click=go_home,),
-                          ft.ElevatedButton("O",
-                        on_click=go_home,),
-                          ft.ElevatedButton("P",
-                        on_click=go_home,),
-                          ft.ElevatedButton("A",
-                        on_click=go_home,),
-                          ft.ElevatedButton("S",
-                        on_click=go_home,),
-                          ft.ElevatedButton("D",
-                        on_click=go_home,),
-                          ft.ElevatedButton("F",
-                        on_click=go_home,),
-                          ft.ElevatedButton("G",
-                        on_click=go_home,),
-                          ft.ElevatedButton("H",
-                        on_click=go_home,),
-                          ft.ElevatedButton("J",
-                        on_click=go_home,),
-                          ft.ElevatedButton("K",
-                        on_click=go_home,),
-                          ft.ElevatedButton("L",
-                        on_click=go_home,),
-                          ft.ElevatedButton("Ñ",
-                        on_click=go_home,),
-                          ft.ElevatedButton("Z",
-                        on_click=go_home,),
-                          ft.ElevatedButton("X",
-                        on_click=go_home,),
-                          ft.ElevatedButton("C",
-                        on_click=go_home,),
-                          ft.ElevatedButton("V",
-                        on_click=go_home,),
-                          ft.ElevatedButton("B",
-                        on_click=go_home,),
-                          ft.ElevatedButton("N",
-                        on_click=go_home,),
-                          ft.ElevatedButton("M",
-                        on_click=go_home,),
+                        
                     ]
                 )
             )
