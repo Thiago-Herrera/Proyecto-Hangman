@@ -18,10 +18,10 @@ Palabras = [
 Palabra_a_adivinar = random.choice(Palabras)
 
 def main(page: ft.Page):
-    page.title = "Hagma"
+    page.title = "HagmaN"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.theme_mode = "light"
+    page.theme_mode = "dark"
     page.window_width = 500
     page.window_min_width = 500
 
@@ -35,7 +35,7 @@ def main(page: ft.Page):
     def go_juego(e):
         page.go("/juego")
 
-    def keyboard_items():
+    def teclas():
         items = []
         for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             items.append(
@@ -71,6 +71,13 @@ def main(page: ft.Page):
         alignment=ft.MainAxisAlignment.CENTER,
     )
     # letras adivinadas ( el teclado)
+    Teclado = ft.Row(
+        wrap=True,
+        spacing=5,
+        run_spacing=6,
+        controls=teclas(),
+        width=page.window_width,
+    )
     # vidas restantes
     # imagen del ahorcado
 
@@ -117,7 +124,17 @@ def main(page: ft.Page):
                 ft.View(
                     "/juego",
                     [
-                        
+                      ft.Container(
+                          width = 500,
+                          height = 800,
+                          padding = 10,
+                          content = ft.Column(
+                              [
+                                  titulo,
+                                  fila_espacios,
+                              ]  
+                            )
+                          ),  
                     ]
                 )
             )

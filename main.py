@@ -18,8 +18,7 @@ class Ahorcado:
         def Menu_de_opciones(self)
         
         
-        def reglas(self)
-        
+        def reglas(self)            
         
         def Estado_de_la_palabra(self)
         
