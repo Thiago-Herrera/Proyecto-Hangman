@@ -3,6 +3,14 @@ import flet as ft
 Vidas = 4
 
 def main(page: ft.Page):
+    page.title = "Hagma"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.theme_mode = "light"
+    page.window_width = 500
+    page.window_min_width = 500
+
+
     def go_home(e):
         page.go("/")
         
@@ -11,63 +19,7 @@ def main(page: ft.Page):
     
     def go_juego(e):
         page.go("/juego")
-    
-    def keyboard_items():
-        items = []
-        for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-            items.append(
-                ft.Container(
-                    content=ft.TextButton(
-                        text=i,
-                        on_click=check_letter,
-                        style=ft.ButtonStyle(color=ft.colors.BLACK),
-                    ),
-                    width=45,
-                    height=45,
-                    bgcolor=ft.colors.AMBER,
-                    border_radius=ft
-                            )
-                )
-    
-    def new_game(e):
-        global word
-        global spaces
-        global lives
-        lose.open = False
-        win.open = False
-        page.update()
-        lives = 6
-        word = random.choice(animals)
-        spaces = ["_"] * len(word)
-        row_spaces.controls = generatespaces(spaces)
-        row_spaces.update()
-        hangman_image.src = f"assets/{hangman_pics[6-lives]}"
-        hangman_image.update()
-    
-    def check_letter(e):
-        
-        global Vidas #Hago "Vidas" global
-        key_pressed = e.control.text #Guarda la letra que se undio
-        existe_letra = False 
-        for idx, caracter in enumerate(word):
-            if caracter == key_pressed:
-                spaces[idx] = key_pressed
-                existe_letra = True
-                row_spaces.controls = generatespaces(spaces)
-                row_spaces.update()
-        if not existe_letra:
-            lives = lives - 1
-            hangman_image.src = f"assets/{hangman_pics[6-lives]}"
-            page.update()
-        if "_" not in spaces:
-            page.dialog = win
-            win.open = True
-            page.update()
-        if lives == 0:
-            page.dialog = lose
-            lose.open = True
-            page.update()
-    
+
     def route_change(route):
         page.views.clear()
         if page.route == "/":
@@ -109,7 +61,7 @@ def main(page: ft.Page):
             page.views.append(
                 ft.View(
                     "/juego",
-                    [ 
+                    [
                          ft.ElevatedButton("Q",
                         on_click=go_home,),
                           ft.ElevatedButton("W",
