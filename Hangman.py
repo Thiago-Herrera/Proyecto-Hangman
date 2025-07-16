@@ -16,6 +16,7 @@ Palabras = [
     
 ]
 Palabra_a_adivinar = random.choice(Palabras)
+espacios = ["_" for _ in Palabra_a_adivinar]  # Inicializa los espacios con guiones bajos
 
 def main(page: ft.Page):
     page.title = "Hagman"
@@ -34,18 +35,37 @@ def main(page: ft.Page):
     
     def go_juego(e):
         page.go("/juego")
+
+    def llenar_fila_espacios(palabra_a_adivinar):
+        items = []
+        for letra in palabra_a_adivinar:
+          items.append(
+                    ft.Text(
+                    value=letra,
+                    size=35,
+                    weight=ft.FontWeight.BOLD,
+                    )
+                  )
+        return items
+        
     def check_letter(e):
         global Vidas
         # conocer la letra
-        letra = e.control.text
-        # verificar si la letra está en la palabra
-        if letra in Palabra_a_adivinar.upper():
+        letra_presionada = e.control.text
+        # verificar si la letra está en la palabra a adivinar
+        if letra_presionada in Palabra_a_adivinar.upper():
             # si la letra está en la palabra, se añade a las letras adivinadas
-            if letra not in fila_espacios.controls:
-                fila_espacios.controls.append(ft.Text(letra, size=30, color="WHITE"))
-                fila_espacios.update()
+            for i, letra in enumerate(Palabra_a_adivinar.upper()):
+                if letra == letra_presionada:
+                   espacios[i] = letra_presionada
+                   # se actualiza la fila de espacios
+                   fila_espacios.controls = llenar_fila_espacios(espacios)
+                   fila_espacios.update()
+            
         else:
             # si la letra no está en la palabra, se resta un intento
+            Vidas -= 1
+
 
     def teclas():
         items = []
@@ -66,7 +86,7 @@ def main(page: ft.Page):
             ) 
 
         return items
-    # elementos del juego
+    # elementos de la interfaz del juego
     # titulo
     titulo = ft.Text(
         "Juego del Ahorcado",
@@ -76,10 +96,7 @@ def main(page: ft.Page):
     )# cambios
     # palabra a adivinar(en un inicio en blanco)
     fila_espacios = ft.Row(
-        [
-            ft.Text("_", size=30, color="WHITE")
-            for _ in range(len(Palabra_a_adivinar))  # Cambia 5 por la longitud de la palabra
-        ],
+        controls=llenar_fila_espacios(espacios),
         alignment=ft.MainAxisAlignment.CENTER,
     )
     # letras adivinadas ( el teclado)
@@ -91,7 +108,9 @@ def main(page: ft.Page):
         width=page.window_width,
     )
     # vidas restantes
+
     # imagen del ahorcado
+    
 
 
     def route_change(route):
