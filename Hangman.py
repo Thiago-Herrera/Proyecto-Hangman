@@ -18,7 +18,7 @@ Palabras = [
 Palabra_a_adivinar = random.choice(Palabras)
 
 def main(page: ft.Page):
-    page.title = "HagmaN"
+    page.title = "Hagman"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.theme_mode = "dark"
@@ -34,6 +34,18 @@ def main(page: ft.Page):
     
     def go_juego(e):
         page.go("/juego")
+    def check_letter(e):
+        global Vidas
+        # conocer la letra
+        letra = e.control.text
+        # verificar si la letra está en la palabra
+        if letra in Palabra_a_adivinar.upper():
+            # si la letra está en la palabra, se añade a las letras adivinadas
+            if letra not in fila_espacios.controls:
+                fila_espacios.controls.append(ft.Text(letra, size=30, color="WHITE"))
+                fila_espacios.update()
+        else:
+            # si la letra no está en la palabra, se resta un intento
 
     def teclas():
         items = []
