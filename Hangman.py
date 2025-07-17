@@ -36,11 +36,40 @@ def main(page: ft.Page):
     def go_juego(e):
         page.go("/juego")
 
+    def on_hover(e):
+        """Cambia el color de fondo del botón al pasar el mouse sobre él."""
+        e.control.bgcolor = ft.colors.GREEN if e.data == "true" else ft.colors.RED
+        page.update()
+
+    def llenar_fila_espacios(espacios):
+        """Llena la fila de espacios con los caracteres de la palabra a adivinar."""
+        return [
+            ft.Container(
+                content=ft.Text(
+                    letra,
+                    size=30,
+                    color=ft.colors.WHITE,
+                ),
+                width=50,
+                height=50,
+                alignment=ft.alignment.center,
+                bgcolor=ft.colors.AMBER,
+                border_radius=ft.border_radius.all(5),
+            )
+            for letra in espacios
+        ]
+
     def check_letter():
         global Vidas
-        letra = e.control.text
-        if letra in Palabra_a_adivinar.upper():
-            Vidas = Vidas
+        letra_seleccionada = e.control.text
+        if letra_seleccionada in Palabra_a_adivinar.upper():
+            # Actualiza los espacios con la letra adivinada
+            for i,letra_palabra in enumerate(Palabra_a_adivinar.upper()):
+                if letra_palabra == letra_seleccionada:
+                    espacios[i] = letra_palabra
+            # Actualiza la fila de espacios
+            fila_espacios.controls = llenar_fila_espacios(espacios)
+            
         else:
             Vidas=(Vidas)-1
             
@@ -140,6 +169,7 @@ def main(page: ft.Page):
                               [
                                   titulo,
                                   fila_espacios,
+                                  Teclado,
                               ]  
                             )
                           ),  
