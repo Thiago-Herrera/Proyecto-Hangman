@@ -5,7 +5,6 @@ Vidas = 4
 
 Palabras = [
     "Python",
-    "Java script",
     "Ordenador",
     "Duolingo",
     "Basicamente",
@@ -13,6 +12,7 @@ Palabras = [
     "Hola",
     "Pastel",
     "Mouse",
+    "UnaPalabraSinSentidoQueEscribiJaja"
     
 ]
 Palabra_a_adivinar = random.choice(Palabras)
@@ -59,7 +59,7 @@ def main(page: ft.Page):
             for letra in espacios
         ]
 
-    def check_letter():
+    def check_letter(e):
         global Vidas
         letra_seleccionada = e.control.text
         if letra_seleccionada in Palabra_a_adivinar.upper():
@@ -69,6 +69,7 @@ def main(page: ft.Page):
                     espacios[i] = letra_palabra
             # Actualiza la fila de espacios
             fila_espacios.controls = llenar_fila_espacios(espacios)
+            fila_espacios.update()
             
         else:
             Vidas=(Vidas)-1
@@ -170,6 +171,10 @@ def main(page: ft.Page):
                                   titulo,
                                   fila_espacios,
                                   Teclado,
+                                  ft.ElevatedButton
+                                     ("Terminar juego", 
+                                     on_click=go_home),
+                                  
                               ]  
                             )
                           ),  
