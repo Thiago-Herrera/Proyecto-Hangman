@@ -16,9 +16,10 @@ Palabras = [
     
 ]
 Palabra_a_adivinar = random.choice(Palabras)
+espacios = ["_" for _ in Palabra_a_adivinar]  # Inicializa los espacios con guiones bajos
 
 def main(page: ft.Page):
-    page.title = "HagmaN"
+    page.title = "Hagman"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.theme_mode = "dark"
@@ -39,7 +40,7 @@ def main(page: ft.Page):
         global Vidas
         letra = e.control.text
         if letra in Palabra_a_adivinar.upper():
-            
+            Vidas = Vidas
         else:
             Vidas=(Vidas)-1
             
@@ -64,7 +65,7 @@ def main(page: ft.Page):
             ) 
 
         return items
-    # elementos del juego
+    # elementos de la interfaz del juego
     # titulo
     titulo = ft.Text(
         "Juego del Ahorcado",
@@ -74,10 +75,7 @@ def main(page: ft.Page):
     )# cambios
     # palabra a adivinar(en un inicio en blanco)
     fila_espacios = ft.Row(
-        [
-            ft.Text("_", size=30, color="WHITE")
-            for _ in range(len(Palabra_a_adivinar))  # Cambia 5 por la longitud de la palabra
-        ],
+        controls=llenar_fila_espacios(espacios),
         alignment=ft.MainAxisAlignment.CENTER,
     )
     # letras adivinadas ( el teclado)
@@ -89,8 +87,8 @@ def main(page: ft.Page):
         width=page.window_width,
     )
     # vidas restantes
-    # imagen del ahorcado
 
+    # imagen del ahorcado
 
     def route_change(route):
         page.views.clear()
