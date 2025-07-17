@@ -35,6 +35,16 @@ def main(page: ft.Page):
     def go_juego(e):
         page.go("/juego")
 
+    def check_letter():
+        global Vidas
+        letra = e.control.text
+        if letra in Palabra_a_adivinar.upper():
+            
+        else:
+            Vidas=(Vidas)-1
+            
+            
+        
     def teclas():
         items = []
         for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
@@ -43,13 +53,13 @@ def main(page: ft.Page):
                     content=ft.TextButton(
                         text=i,
                         on_click=check_letter,
-                        style=ft.ButtonStyle(color=ft.colors.BLACK),
+                        style=ft.ButtonStyle(color=ft.colors.WHITE),
                     ),
                     width=45,
                     height=45,
                     bgcolor=ft.colors.AMBER,
                     border_radius=ft.border_radius.all(5),
-                    on_hover=on_hover,
+                    on_hover = on_hover,
                 )
             ) 
 
