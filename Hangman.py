@@ -59,7 +59,7 @@ def main(page: ft.Page):
             for letra in espacios
         ]
 
-    def check_letter():
+    def check_letter(e):
         global Vidas
         letra_seleccionada = e.control.text
         if letra_seleccionada in Palabra_a_adivinar.upper():
