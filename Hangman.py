@@ -12,7 +12,6 @@ Palabras = [
     "Hola",
     "Pastel",
     "Mouse",
-    "UnaPalabraSinSentidoQueEscribiJaja"
     
 ]
 Palabra_a_adivinar = random.choice(Palabras)
