@@ -1,7 +1,7 @@
 import flet as ft
 import random
 
-Vidas = 4
+Vidas = 5
 
 Palabras = [
     "Python",
@@ -73,6 +73,9 @@ def main(page: ft.Page):
             
         else:
             Vidas=(Vidas)-1
+            vidas_restantes.value = f"Vidas Restantes = {Vidas}"
+            vidas_restantes.update()
+            
             
             
         
@@ -117,9 +120,19 @@ def main(page: ft.Page):
         width=page.window_width,
     )
     # vidas restantes
-
+    vidas_restantes = (
+        ft.Text(
+           f"Vidas Restantes = {Vidas}"
+        )
+    )
+    
     # imagen del ahorcado
-
+    imagen_4 = ft.Image(
+        src=f"Images\pixil-frame-4.png",
+        width=200,
+        height=200,
+        fit=ft.ImageFit.CONTAIN,
+    )
     def route_change(route):
         page.views.clear()
         if page.route == "/":
@@ -169,8 +182,13 @@ def main(page: ft.Page):
                           content = ft.Column(
                               [
                                   titulo,
+                                  imagen_4,
                                   fila_espacios,
                                   Teclado,
+                                  ft.ElevatedButton
+                                            ("Terminar Juego", 
+                                    on_click=go_home),
+                                  vidas_restantes
                               ]  
                             )
                           ),  
