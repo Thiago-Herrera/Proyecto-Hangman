@@ -22,7 +22,7 @@ def main(page: ft.Page):
     page.title = "Hagman"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.theme_mode = "dark"
+    page.theme_mode = "white"
     page.window_width = 500
     page.window_min_width = 500
 
@@ -128,10 +128,7 @@ def main(page: ft.Page):
     
     # imagen del ahorcado
     imagen_4 = ft.Image(
-        src=f"Images\pixil-frame-4.png",
-        width=200,
-        height=200,
-        fit=ft.ImageFit.CONTAIN,
+        src = "pscopato.png"
     )
     def route_change(route):
         page.views.clear()
