@@ -1,5 +1,8 @@
+import os
 import flet as ft
 import random
+
+imange_path = os.path.join(os.path.dirname(__file__), "Images", "ahorcado_1.png")
 
 Vidas = 5
 
@@ -128,7 +131,10 @@ def main(page: ft.Page):
     
     # imagen del ahorcado
     imagen_4 = ft.Image(
-        src = "pscopato.png"
+        src=imange_path,
+        width=200,
+        height=200,
+        fit=ft.ImageFit.CONTAIN,
     )
     def route_change(route):
         page.views.clear()
