@@ -38,10 +38,16 @@ def main(page: ft.Page):
     
     def go_juego(e):
         page.go("/juego")
+        
+    def new_game(e):
+        a = ""
+        
+    def close_dgl(e):
+        a = ""
 
     def on_hover(e):
         """Cambia el color de fondo del botón al pasar el mouse sobre él."""
-        e.control.bgcolor = ft.colors.GREEN if e.data == "true" else ft.colors.RED
+        e.control.bgcolor = ft.colors.GREEN if e.data == "true" else ft.colors.WHITE
         page.update()
 
     def llenar_fila_espacios(espacios):
@@ -56,7 +62,7 @@ def main(page: ft.Page):
                 width=50,
                 height=50,
                 alignment=ft.alignment.center,
-                bgcolor=ft.colors.AMBER,
+                bgcolor=ft.colors.BLACK54,
                 border_radius=ft.border_radius.all(5),
             )
             for letra in espacios
@@ -72,19 +78,22 @@ def main(page: ft.Page):
                     espacios[i] = letra_palabra
             # Actualiza la fila de espacios
             fila_espacios.controls = llenar_fila_espacios(espacios)
-            
-            
         else:
             Vidas=(Vidas)-1
             vidas_restantes.value = f"Vidas Restantes = {Vidas}"
             vidas_restantes.update()
+        #si se gana el juego
+        if  "_" not in espacios:
+            page.dialog = win
+            win.open = True
+            page.update()
             
             
             
         
     def teclas():
         items = []
-        for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ-":
             items.append(
                 ft.Container(
                     content=ft.TextButton(
@@ -94,7 +103,7 @@ def main(page: ft.Page):
                     ),
                     width=45,
                     height=45,
-                    bgcolor=ft.colors.AMBER,
+                    bgcolor=ft.colors.WHITE,
                     border_radius=ft.border_radius.all(5),
                     on_hover = on_hover,
                 )
@@ -136,6 +145,21 @@ def main(page: ft.Page):
         height=200,
         fit=ft.ImageFit.CONTAIN,
     )
+    
+    
+    
+    #Ganar
+    win = ft.AlertDialog(       
+        modal=True,
+        title=ft.Text("You, Win!"),
+        content=ft.Text("Do you  want new game?"),
+        actions=[
+            ft.TextButton("Yes", on_click=new_game),
+            ft.TextButton("No", on_click=close_dgl),
+        ],
+    )
+    
+        
     def route_change(route):
         page.views.clear()
         if page.route == "/":
