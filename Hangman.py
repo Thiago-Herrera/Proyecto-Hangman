@@ -2,7 +2,7 @@ import os
 import flet as ft
 import random
 
-imange_path = os.path.join(os.path.dirname(__file__), "Images", "ahorcado_1.png")
+imange_path = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-0.png")
 
 Vidas = 5
 
@@ -25,7 +25,7 @@ def main(page: ft.Page):
     page.title = "Hagman"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.theme_mode = "white"
+    page.theme_mode = "dark"
     page.window_width = 500
     page.window_min_width = 500
 
@@ -40,10 +40,11 @@ def main(page: ft.Page):
         page.go("/juego")
         
     def new_game(e):
-        a = ""
+        # Reinicia el juego
+        global Vidas, Palabra_a_adivinar, espacios
         
     def close_dgl(e):
-        a = ""
+        page.close(win)
 
     def on_hover(e):
         """Cambia el color de fondo del botón al pasar el mouse sobre él."""
@@ -84,9 +85,11 @@ def main(page: ft.Page):
             vidas_restantes.update()
         #si se gana el juego
         if  "_" not in espacios:
-            page.dialog = win
-            win.open = True
+            #print("You, Win!")
+            page.open(win)
             page.update()
+
+        #si se pierde el juego
             
             
             
@@ -151,8 +154,8 @@ def main(page: ft.Page):
     #Ganar
     win = ft.AlertDialog(       
         modal=True,
-        title=ft.Text("You, Win!"),
-        content=ft.Text("Do you  want new game?"),
+        title=ft.Text("Siuuuuu, tu ganaste"),
+        content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
             ft.TextButton("Yes", on_click=new_game),
             ft.TextButton("No", on_click=close_dgl),
