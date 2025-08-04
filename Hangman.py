@@ -123,7 +123,7 @@ def main(page: ft.Page):
     # elementos de la interfaz del juego
     # titulo
     titulo = ft.Text(
-        "Juego del Ahorcado",
+        values="Juego del Ahorcado",
         size=30,
         color="WHITE",
         text_align=ft.TextAlign.CENTER,
