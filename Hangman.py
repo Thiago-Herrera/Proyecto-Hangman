@@ -34,7 +34,8 @@ def main(page: ft.Page):
     page.theme_mode = "dark"
     page.window_width = 1000
     page.window_min_width = 1000
-
+    
+    imagen_actual = imagen_0
 
     def go_home(e):
         page.go("/")
@@ -90,6 +91,34 @@ def main(page: ft.Page):
             Vidas=(Vidas)-1
             vidas_restantes.value = f"Vidas Restantes = {Vidas}"
             vidas_restantes.update()
+            if Vidas == 6:
+                imagen_actual = imagen_0
+                page.update()
+        
+            elif Vidas == 5:
+                imagen_actual = imagen_1
+                page.update()
+        
+            elif Vidas == 4:
+                imagen_actual = imagen_2
+                page.update()
+        
+            elif Vidas == 3:
+                imagen_actual = imagen_3
+                page.update()
+    
+            elif Vidas == 2:
+                imagen_actual = imagen_4
+                page.update()
+    
+            elif Vidas == 1:
+                imagen_actual = imagen_5
+                page.update()
+    
+            elif Vidas == 0:
+                imagen_actual = imagen_6
+                page.update()
+            
         #si se gana el juego
         if  "_" not in espacios:
             #print("You, Win!")
@@ -147,33 +176,7 @@ def main(page: ft.Page):
            f"Vidas Restantes = {Vidas}"
         )
     )
-    if Vidas == 6:
-        imagen_actual = imagen_0
-        page.update()
-        
-    elif Vidas == 5:
-        imagen_actual = imagen_1
-        page.update()
-        
-    elif Vidas == 4:
-        imagen_actual = imagen_2
-        page.update()
-        
-    elif Vidas == 3:
-        imagen_actual = imagen_3
-        page.update()
-    
-    elif Vidas == 2:
-        imagen_actual = imagen_4
-        page.update()
-    
-    elif Vidas == 1:
-        imagen_actual = imagen_5
-        page.update()
-    
-    elif Vidas == 0:
-        imagen_actual = imagen_6
-        page.update()
+
         
      
     
