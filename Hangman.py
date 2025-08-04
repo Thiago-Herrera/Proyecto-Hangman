@@ -2,9 +2,15 @@ import os
 import flet as ft
 import random
 
-imange_path = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-0.png")
+imagen_0 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-0.png")
+imagen_1 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-1.png")
+imagen_2 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-2.png")
+imagen_3 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-3.png")
+imagen_4 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-4.png")
+imagen_5 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-5.png")
+imagen_6 = os.path.join(os.path.dirname(__file__), "Images", "pixil-frame-6.png")
 
-Vidas = 5
+Vidas = 6
 
 Palabras = [
     "Python",
@@ -26,8 +32,8 @@ def main(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.theme_mode = "dark"
-    page.window_width = 500
-    page.window_min_width = 500
+    page.window_width = 1000
+    page.window_min_width = 1000
 
 
     def go_home(e):
@@ -45,10 +51,11 @@ def main(page: ft.Page):
         
     def close_dgl(e):
         page.close(win)
+        page.window.destroy()
 
     def on_hover(e):
         """Cambia el color de fondo del botón al pasar el mouse sobre él."""
-        e.control.bgcolor = ft.colors.GREEN if e.data == "true" else ft.colors.WHITE
+        e.control.bgcolor = ft.colors.BACKGROUND if e.data == "true" else ft.colors.BACKGROUND
         page.update()
 
     def llenar_fila_espacios(espacios):
@@ -96,7 +103,7 @@ def main(page: ft.Page):
         
     def teclas():
         items = []
-        for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ-":
+        for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ ":
             items.append(
                 ft.Container(
                     content=ft.TextButton(
@@ -106,7 +113,7 @@ def main(page: ft.Page):
                     ),
                     width=45,
                     height=45,
-                    bgcolor=ft.colors.WHITE,
+                    bgcolor=ft.colors.BLACK,
                     border_radius=ft.border_radius.all(5),
                     on_hover = on_hover,
                 )
@@ -140,10 +147,39 @@ def main(page: ft.Page):
            f"Vidas Restantes = {Vidas}"
         )
     )
+    if Vidas == 6:
+        imagen_actual = imagen_0
+        page.update()
+        
+    elif Vidas == 5:
+        imagen_actual = imagen_1
+        page.update()
+        
+    elif Vidas == 4:
+        imagen_actual = imagen_2
+        page.update()
+        
+    elif Vidas == 3:
+        imagen_actual = imagen_3
+        page.update()
+    
+    elif Vidas == 2:
+        imagen_actual = imagen_4
+        page.update()
+    
+    elif Vidas == 1:
+        imagen_actual = imagen_5
+        page.update()
+    
+    elif Vidas == 0:
+        imagen_actual = imagen_6
+        page.update()
+        
+     
     
     # imagen del ahorcado
-    imagen_4 = ft.Image(
-        src=imange_path,
+    imagen = ft.Image(
+        src=imagen_actual,
         width=200,
         height=200,
         fit=ft.ImageFit.CONTAIN,
@@ -154,7 +190,7 @@ def main(page: ft.Page):
     #Ganar
     win = ft.AlertDialog(       
         modal=True,
-        title=ft.Text("Siuuuuu, tu ganaste"),
+        title=ft.Text("Ganaste"),
         content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
             ft.TextButton("Yes", on_click=new_game),
@@ -212,7 +248,7 @@ def main(page: ft.Page):
                           content = ft.Column(
                               [
                                   titulo,
-                                  imagen_4,
+                                  imagen,
                                   fila_espacios,
                                   Teclado,
                                   ft.ElevatedButton
