@@ -49,9 +49,17 @@ def main(page: ft.Page):
     def new_game(e):
         # Reinicia el juego
         global Vidas, Palabra_a_adivinar, espacios
+        Vidas = 6
+        Palabra_a_adivinar = random.choice(Palabras)
+        espacios = ["_" for _ in Palabra_a_adivinar]
         
-    def close_dgl(e):
+        
+    def close_dgl_win(e):
         page.close(win)
+        page.window.destroy()
+    
+    def close_dgl_lose(e):
+        page.close(lose)
         page.window.destroy()
 
     def on_hover(e):
@@ -79,6 +87,7 @@ def main(page: ft.Page):
 
     def check_letter(e):
         global Vidas
+        global imagen_actual
         letra_seleccionada = e.control.text
         if letra_seleccionada in Palabra_a_adivinar.upper():
             # Actualiza los espacios con la letra adivinada
@@ -93,31 +102,26 @@ def main(page: ft.Page):
             vidas_restantes.update()
             if Vidas == 6:
                 imagen_actual = imagen_0
-                page.update()
         
             elif Vidas == 5:
                 imagen_actual = imagen_1
-                page.update()
         
             elif Vidas == 4:
                 imagen_actual = imagen_2
-                page.update()
         
             elif Vidas == 3:
                 imagen_actual = imagen_3
-                page.update()
     
             elif Vidas == 2:
                 imagen_actual = imagen_4
-                page.update()
     
             elif Vidas == 1:
                 imagen_actual = imagen_5
-                page.update()
     
             elif Vidas == 0:
                 imagen_actual = imagen_6
-                page.update()
+            imagen.src = imagen_actual
+            imagen.update()
             
         #si se gana el juego
         if  "_" not in espacios:
@@ -126,7 +130,9 @@ def main(page: ft.Page):
             page.update()
 
         #si se pierde el juego
-            
+        if Vidas == 0:
+            page.open(lose)
+            page.update()
             
             
         
@@ -152,7 +158,7 @@ def main(page: ft.Page):
     # elementos de la interfaz del juego
     # titulo
     titulo = ft.Text(
-        values="Juego del Ahorcado",
+        "Juego del Ahorcado",
         size=30,
         color="WHITE",
         text_align=ft.TextAlign.CENTER,
@@ -177,7 +183,6 @@ def main(page: ft.Page):
         )
     )
 
-        
      
     
     # imagen del ahorcado
@@ -196,11 +201,19 @@ def main(page: ft.Page):
         title=ft.Text("Ganaste"),
         content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
-            ft.TextButton("Yes", on_click=new_game),
-            ft.TextButton("No", on_click=close_dgl),
+            ft.TextButton("Si", on_click=new_game),
+            ft.TextButton("No", on_click=close_dgl_win),
         ],
     )
-    
+    #perder
+    lose = ft.AlertDialog(
+        modal=True,
+        title=ft.Text("Perdiste"),
+        content=ft.Text("¿Quieres jugar de nuevo?"),
+        actions=[
+            ft.TextButton("Si", on_click=new_game),
+            ft.TextButton("No", on_click=close_dgl_lose),
+        ],)
         
     def route_change(route):
         page.views.clear()
