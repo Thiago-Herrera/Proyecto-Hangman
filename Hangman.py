@@ -46,13 +46,23 @@ def main(page: ft.Page):
     def go_juego(e):
         page.go("/juego")
         
-    def new_game(e):
+    def new_game_win(e):
         # Reinicia el juego
         global Vidas, Palabra_a_adivinar, espacios
         Vidas = 6
         Palabra_a_adivinar = random.choice(Palabras)
         espacios = ["_" for _ in Palabra_a_adivinar]
+        page.close(win)
+        page.update()
         
+    def new_game_lose(e):
+        # Reinicia el juego
+        global Vidas, Palabra_a_adivinar, espacios
+        Vidas = 6
+        Palabra_a_adivinar = random.choice(Palabras)
+        espacios = ["_" for _ in Palabra_a_adivinar]
+        page.close(lose)
+        page.update()
         
     def close_dgl_win(e):
         page.close(win)
