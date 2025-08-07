@@ -52,19 +52,19 @@ def main(page: ft.Page):
         Vidas = 6
         Palabra_a_adivinar = random.choice(Palabras)
         espacios = ["_" for _ in Palabra_a_adivinar]
+        fila_espacios.controls = llenar_fila_espacios(espacios)
         page.close(win)
         page.update()
         
     def new_game_lose(e):
         # Reinicia el juego
         global Vidas, Palabra_a_adivinar, espacios
-        Vidas = 6#entero
-        
-
-        Palabra_a_adivinar = random.choice(Palabras) #string
-
-        espacios = ["_" for _ in Palabra_a_adivinar] #lista DE strings
-
+        Vidas = 6
+        vidas_restantes.value = f"Vidas Restantes = {Vidas}"
+        vidas_restantes.update()
+        Palabra_a_adivinar = random.choice(Palabras)
+        espacios = ["_" for _ in Palabra_a_adivinar]
+        fila_espacios.controls = llenar_fila_espacios(espacios)
         page.close(lose)
         page.update()
         
@@ -216,7 +216,7 @@ def main(page: ft.Page):
         title=ft.Text("Ganaste"),
         content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
-            ft.TextButton("Si", on_click=new_game),
+            ft.TextButton("Si", on_click=new_game_win),
             ft.TextButton("No", on_click=close_dgl_win),
         ],
     )
@@ -226,7 +226,7 @@ def main(page: ft.Page):
         title=ft.Text("Perdiste"),
         content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
-            ft.TextButton("Si", on_click=new_game),
+            ft.TextButton("Si", on_click=new_game_lose),
             ft.TextButton("No", on_click=close_dgl_lose),
         ],)
         
