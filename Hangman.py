@@ -48,23 +48,34 @@ def main(page: ft.Page):
         
     def new_game_win(e):
         # Reinicia el juego
-        global Vidas, Palabra_a_adivinar, espacios
-        Vidas = 6
+        global Vidas, Palabra_a_adivinar, espacios, imagen_0
+        imagen_actual = imagen_0
+        imagen.src = imagen_actual
+        imagen.update()
         Palabra_a_adivinar = random.choice(Palabras)
         espacios = ["_" for _ in Palabra_a_adivinar]
         fila_espacios.controls = llenar_fila_espacios(espacios)
+        fila_espacios.update()
+        Vidas = 6
+        vidas_restantes.value = f"Vidas Restantes = {Vidas}"
+        vidas_restantes.update()
         page.close(win)
         page.update()
         
     def new_game_lose(e):
         # Reinicia el juego
         global Vidas, Palabra_a_adivinar, espacios
-        Vidas = 6
+        imagen_actual = imagen_0
+        imagen.src = imagen_actual
+        imagen.update()
         vidas_restantes.value = f"Vidas Restantes = {Vidas}"
         vidas_restantes.update()
         Palabra_a_adivinar = random.choice(Palabras)
         espacios = ["_" for _ in Palabra_a_adivinar]
         fila_espacios.controls = llenar_fila_espacios(espacios)
+        Vidas = 6
+        vidas_restantes.value = f"Vidas Restantes = {Vidas}"
+        vidas_restantes.update()
         page.close(lose)
         page.update()
         
