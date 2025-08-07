@@ -58,9 +58,13 @@ def main(page: ft.Page):
     def new_game_lose(e):
         # Reinicia el juego
         global Vidas, Palabra_a_adivinar, espacios
-        Vidas = 6
-        Palabra_a_adivinar = random.choice(Palabras)
-        espacios = ["_" for _ in Palabra_a_adivinar]
+        Vidas = 6#entero
+        
+
+        Palabra_a_adivinar = random.choice(Palabras) #string
+
+        espacios = ["_" for _ in Palabra_a_adivinar] #lista DE strings
+
         page.close(lose)
         page.update()
         
@@ -131,6 +135,7 @@ def main(page: ft.Page):
             elif Vidas == 0:
                 imagen_actual = imagen_6
             imagen.src = imagen_actual
+            imagen.src = f"images/pixil-frame-{6-Vidas}.png"
             imagen.update()
             
         #si se gana el juego
