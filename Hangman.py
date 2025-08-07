@@ -52,6 +52,7 @@ def main(page: ft.Page):
         Vidas = 6
         Palabra_a_adivinar = random.choice(Palabras)
         espacios = ["_" for _ in Palabra_a_adivinar]
+        fila_espacios.controls = llenar_fila_espacios(espacios)
         page.close(win)
         page.update()
         
@@ -59,8 +60,11 @@ def main(page: ft.Page):
         # Reinicia el juego
         global Vidas, Palabra_a_adivinar, espacios
         Vidas = 6
+        vidas_restantes.value = f"Vidas Restantes = {Vidas}"
+        vidas_restantes.update()
         Palabra_a_adivinar = random.choice(Palabras)
         espacios = ["_" for _ in Palabra_a_adivinar]
+        fila_espacios.controls = llenar_fila_espacios(espacios)
         page.close(lose)
         page.update()
         
