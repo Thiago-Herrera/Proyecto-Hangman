@@ -211,7 +211,7 @@ def main(page: ft.Page):
         title=ft.Text("Ganaste"),
         content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
-            ft.TextButton("Si", on_click=new_game),
+            ft.TextButton("Si", on_click=new_game_win),
             ft.TextButton("No", on_click=close_dgl_win),
         ],
     )
@@ -221,7 +221,7 @@ def main(page: ft.Page):
         title=ft.Text("Perdiste"),
         content=ft.Text("¿Quieres jugar de nuevo?"),
         actions=[
-            ft.TextButton("Si", on_click=new_game),
+            ft.TextButton("Si", on_click=new_game_lose),
             ft.TextButton("No", on_click=close_dgl_lose),
         ],)
         
